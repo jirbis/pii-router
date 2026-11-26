@@ -520,6 +520,8 @@ class Handler(BaseHTTPRequestHandler):
 
 def serve(port: int | None = None) -> int:
     global FILTER
+    # zstd runs as a subprocess after the tokenizers are used: avoid their fork warning.
+    os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
     cfg = config.load()
     FILTER = PiiFilter(cfg)
     server = ThreadingHTTPServer(("127.0.0.1", int(port or cfg["port"])), Handler)
