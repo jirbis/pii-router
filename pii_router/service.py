@@ -55,6 +55,8 @@ def agent_xml() -> str:
 
 
 def launchctl(*args: str) -> int:
+    if not Path("/bin/launchctl").exists():       # not macOS: no service
+        return 1
     return subprocess.run(["/bin/launchctl", *args], capture_output=True).returncode
 
 

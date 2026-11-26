@@ -13,6 +13,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import pytest  # noqa: E402
 
 
+@pytest.fixture(autouse=True)
+def no_real_service(monkeypatch):
+    """Tests must never restart or stop the proxy running on this Mac."""
+    from pii_router import service
+    monkeypatch.setattr(service, "launchctl", lambda *a: 1)
+
+
 @pytest.fixture
 def flt():
     from pii_router import config
