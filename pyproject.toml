@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,7 @@ name = "pii-router"
 dynamic = ["version"]
 description = "Local proxy that filters personal data out of Codex and Claude Code requests before they reach a cloud model"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.10"
 dependencies = ["truststore>=0.9"]
 
@@ -25,13 +25,13 @@ pii-router = "pii_router.cli:main"
 Homepage = "https://github.com/jirbis/pii-router"
 
 [tool.setuptools]
-packages = ["pii_router"]
+packages = ["pii_router", "pii_router.data"]
 
 [tool.setuptools.dynamic]
 version = {attr = "pii_router.__version__"}
 
 [tool.setuptools.package-data]
-pii_router = ["data/*.jsonl"]
+"pii_router.data" = ["*.jsonl"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
