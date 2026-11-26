@@ -1,0 +1,10 @@
+{
+  "name": "pii-router",
+  "version": "0.1.0",
+  "description": "Keeps personal data on your Mac: checks that Claude Code goes through the local PII Router filter, asks before a tool call sends known personal data out, and adds a skill to set up and test the filter.",
+  "author": {"name": "jirbis", "url": "https://github.com/jirbis"},
+  "homepage": "https://github.com/jirbis/pii-router",
+  "repository": "https://github.com/jirbis/pii-router",
+  "license": "MIT",
+  "keywords": ["privacy", "pii", "gdpr", "proxy", "redaction"]
+}

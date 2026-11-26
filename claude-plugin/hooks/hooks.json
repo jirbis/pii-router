@@ -1,0 +1,12 @@
+{
+  "description": "PII Router: session check and a guard for tool calls that send data off the Mac",
+  "hooks": {
+    "SessionStart": [
+      {"hooks": [{"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/pii-router\" hook session-start", "timeout": 15}]}
+    ],
+    "PreToolUse": [
+      {"matcher": "Bash|WebFetch|WebSearch",
+       "hooks": [{"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/pii-router\" hook pre-tool-use", "timeout": 10}]}
+    ]
+  }
+}

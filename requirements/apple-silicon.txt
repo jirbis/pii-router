@@ -1,0 +1,7 @@
+# Apple Silicon (arm64): current PyTorch with the MPS GPU backend.
+-r minimal.txt
+presidio-analyzer>=2.2,<3
+spacy>=3.7
+torch>=2.4
+transformers>=4.44
+gliner>=0.2.16

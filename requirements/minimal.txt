@@ -1,0 +1,3 @@
+# Rules and the dictionary only (and the LLM detector, which needs no packages).
+truststore>=0.9
+pypdf>=4

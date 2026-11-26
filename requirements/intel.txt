@@ -1,0 +1,8 @@
+# Intel Mac (x86_64): PyTorch stops at 2.2.2 there, which pins the rest.
+-r minimal.txt
+presidio-analyzer>=2.2,<3
+spacy>=3.7,<3.9
+torch==2.2.2
+numpy<2
+transformers>=4.38,<4.46
+gliner==0.2.13

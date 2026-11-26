@@ -1,0 +1,21 @@
+{
+  "name": "pii-router",
+  "version": "0.1.0",
+  "description": "Set up, check and tune PII Router, the local proxy that filters personal data out of Codex requests to GPT and Ollama Cloud.",
+  "author": {"name": "jirbis", "url": "https://github.com/jirbis"},
+  "homepage": "https://github.com/jirbis/pii-router",
+  "repository": "https://github.com/jirbis/pii-router",
+  "license": "MIT",
+  "keywords": ["privacy", "pii", "proxy"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PII Router",
+    "shortDescription": "Keep personal data on your Mac",
+    "longDescription": "Personal data in Codex requests is replaced by [PII:TYPE_n] tags before it reaches a cloud model and restored in the answers. This plugin teaches Codex to work with the tags and to set up, test and tune the filter with the pii-router command.",
+    "developerName": "jirbis",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/jirbis/pii-router",
+    "defaultPrompt": ["Is my Codex traffic filtered by PII Router?", "Compare the PII Router pipelines"]
+  }
+}

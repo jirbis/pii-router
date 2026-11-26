@@ -1,0 +1,12 @@
+#!/bin/bash
+# Runs the pii-router installed by install.sh. The plugin carries no Python itself.
+PY="${PII_ROUTER_HOME:-$HOME/Library/Application Support/pii-router}/venv/bin/python"
+if [ ! -x "$PY" ]; then
+  if [ "$1 $2" = "hook session-start" ]; then
+    echo '{"systemMessage": "PII Router plugin: the filter is not installed, nothing is filtered. Install: git clone https://github.com/jirbis/pii-router && cd pii-router && ./install.sh --claude"}'
+  fi
+  [ "$1" = hook ] && exit 0
+  echo "pii-router is not installed: git clone https://github.com/jirbis/pii-router && cd pii-router && ./install.sh" >&2
+  exit 1
+fi
+exec "$PY" -I -m pii_router "$@"

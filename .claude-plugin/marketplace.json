@@ -1,0 +1,13 @@
+{
+  "name": "pii-router",
+  "owner": {"name": "jirbis", "url": "https://github.com/jirbis"},
+  "metadata": {"description": "PII Router: keep personal data out of cloud model requests"},
+  "plugins": [
+    {
+      "name": "pii-router",
+      "source": "./claude-plugin",
+      "description": "Session check, tool-call guard and a skill for the local PII Router filter",
+      "category": "security"
+    }
+  ]
+}

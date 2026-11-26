@@ -1,0 +1,30 @@
+name: tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r requirements/minimal.txt pytest
+      - run: python -m pytest -q
+      - run: python -m pii_router eval --pipeline rules
+      - name: plugin manifests are valid JSON
+        run: |
+          for f in .claude-plugin/marketplace.json claude-plugin/.claude-plugin/plugin.json \
+                   claude-plugin/hooks/hooks.json codex-plugin/.codex-plugin/plugin.json; do
+            python -m json.tool "$f" >/dev/null && echo "ok $f"
+          done
+      - run: bash -n install.sh && bash -n claude-plugin/bin/pii-router
